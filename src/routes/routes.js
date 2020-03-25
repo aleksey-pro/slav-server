@@ -1,7 +1,7 @@
 const path = require('path');
 const ClientsController = require('../controllers/clients_controler');
 const createClient = require('../controllers/create_client');
-const app = require('../../app');
+const app = require('../app');
 
 module.exports = (app) => {
 

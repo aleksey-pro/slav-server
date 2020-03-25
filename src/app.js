@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config()
-const routes = require('./src/routes/routes');
+const routes = require('./routes/routes');
 
 mongoose.Promise = global.Promise;
 
