@@ -5,9 +5,9 @@ WORKDIR /app
 
 COPY ./src /app/src
 COPY ./package.json /app
-COPY ./package-lock.json /app
+# COPY ./package-lock.json /app
 
-RUN npm cache clear --force && npm install --only=prod --no-shrinkwrap --update-binary --verbose
+RUN npm install --only=prod --verbose
 
 CMD ["npm", "run", "start:prod"]
 EXPOSE 3050
