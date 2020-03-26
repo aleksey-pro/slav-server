@@ -10,7 +10,7 @@ const routes = require('./routes/routes');
 mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect('mongodb://localhost/slavsalon');
+  mongoose.connect(process.env.MONGO_URI);
 }
 
 // !!!order of middlewares is important
