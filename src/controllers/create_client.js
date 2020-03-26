@@ -1,10 +1,11 @@
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 const Client = require('../models/client');
 const crypto = require('../utils/encypt');
 const generateQRCode = require('../utils/generateQRCode');
 
 const setImageLink = (id) => {
-  return `${process.env.APP_URL}/public/${id}.png`;
+  return `${process.env.APP_URL}/${path.resolve(__dirname, '..','QRImages', `${id}.png`)}`;
 }
 
 const createClient = (req, res, next) =>  {
