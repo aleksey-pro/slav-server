@@ -5,7 +5,7 @@ const crypto = require('../utils/encypt');
 const generateQRCode = require('../utils/generateQRCode');
 
 const setImageLink = (id) => {
-  return `${process.env.APP_URL}/${path.resolve(__dirname, '..','QRImages', `${id}.png`)}`;
+  return `${process.env.APP_URL}/QRImages/${id}.png`;
 }
 
 const createClient = (req, res, next) =>  {
