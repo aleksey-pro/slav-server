@@ -22,7 +22,7 @@ module.exports = (app) => {
 
   app.get('/api/v1/client/:id', checkAuth, ClientsController.getOne);
 
-  app.get('/api/v1/register/:id', checkAuth, ClientsController.updateOne);
+  app.get('/api/v1/register/:id', ClientsController.updateOne);
 
   app.post('/api/v1/clients', checkAuth, createClient);
 
