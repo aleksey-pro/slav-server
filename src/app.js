@@ -18,10 +18,8 @@ app.use(bodyParser.json()); //! above routes very important
 app.use(cors());
 routes(app);
 app.use(express.static(path.join(__dirname, "public")));
-//  Error catch middleware, thatconsole.log(process.env.APP_PORT); after routes, after request object and before response object
 app.use((err, req, res, next) => {
-  res.status(422).send({ error: err.message }); // вернет ошибку в ответ сервера
-   // next()
+  res.status(422).send({ error: err.message });
 });
 
 module.exports = app;

@@ -9,11 +9,15 @@ module.exports = (app) => {
 
   app.post('/api/v1/auth', authController);
 
-  app.get('/api/v1/clients', checkAuth, ClientsController.get);
+  app.get('/api/v1/clients', ClientsController.get);
 
-  app.get('/QRImages/*', (req, res, next) => {
-    const filePath = req.path;
-    res.download(`${process.cwd()}/${filePath}`);
+  app.get('/api/v1/qrimages', (req, res, next) => {
+    try {
+      const file = req.query.img;
+      res.download(`${process.cwd()}/src/qrimages/${file}`);
+    } catch (err) {
+      console.log(err);
+    }
   });
 
   app.get('/api/v1/client/:id', checkAuth, ClientsController.getOne);

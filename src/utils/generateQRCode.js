@@ -7,8 +7,9 @@ const options = {
 };
 
 const generateQRCode = async (id, name) => {
-  const imgPath = `${path.join('src', 'QRImages')}/${name}.png`;
-  const fullUrl = `http://www.xn--80aaf8admgsd3i.xn--p1acf/api/v1/register/${id}`;
+  // where to save
+  const imgPath = `${path.join('src', 'qrimages')}/${name}.png`;
+  const fullUrl = `${process.env.APP_URL}/api/v1/register/${id}`;
   await QRCode.toFile(imgPath, fullUrl, options, function (err) {
     if (err) throw err
     console.log('saved.')
