@@ -27,12 +27,17 @@ module.exports = {
   },
 
   edit(req, res, next) {
-    const clientId = req.params.id; // match name after :
+    const clientId = req.params.id;
     const newData = req.body;
-
-    Client.findOneAndUpdate({ id: clientId }, newData)
-      .then(() => Client.findOne({ id:  clientId}))
-      .then(client => res.send(client))
+    Client.findOne({ id:  clientId})
+      .then(client => {
+        const { bonuses, bonusesToAdd } = client;
+        const bonusesTotal = bonuses + Number(bonusesToAdd);
+        const updatedData = Object.assign(newData, { bonuses: bonusesTotal });
+        Client.findOneAndUpdate({ id: clientId }, updatedData)
+          .then(() => Client.findOne({ id:  clientId}))
+          .then(client => res.send(client))
+      })
       .catch(next);
   },
 

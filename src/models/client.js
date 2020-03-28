@@ -13,6 +13,14 @@ const ClientSchema = new Schema({
     type: Number,
     default: 1,
   },
+  bonuses: {
+    type: Number,
+    default: 0,
+  },
+  bonusesToAdd: {
+    type: String,
+    default: 0,
+  },
   info: String,
   link: String,
 });

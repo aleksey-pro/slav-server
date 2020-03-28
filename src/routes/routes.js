@@ -11,7 +11,7 @@ module.exports = (app) => {
 
   app.get('/api/v1/clients', checkAuth, ClientsController.get);
 
-  app.get('/api/v1/qrimages', checkAuth, (req, res, next) => {
+  app.get('/api/v1/qrimages', (req, res, next) => {
     try {
       const file = req.query.img;
       res.download(`${process.cwd()}/src/qrimages/${file}`);

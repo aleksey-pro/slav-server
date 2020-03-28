@@ -15,5 +15,3 @@ const user = new UserModel({
 });
 
 user.save();
-
-process.exit(1);
