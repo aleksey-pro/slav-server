@@ -9,9 +9,9 @@ module.exports = (app) => {
 
   app.post('/api/v1/auth', authController);
 
-  app.get('/api/v1/clients', ClientsController.get);
+  app.get('/api/v1/clients', checkAuth, ClientsController.get);
 
-  app.get('/api/v1/qrimages', (req, res, next) => {
+  app.get('/api/v1/qrimages', checkAuth, (req, res, next) => {
     try {
       const file = req.query.img;
       res.download(`${process.cwd()}/src/qrimages/${file}`);
