@@ -9,9 +9,6 @@ env:
   - MONGO_URI=mongodb://127.0.0.1:27017/slavsalon
   - CYPHER_SECRET=slavs
   - SECRET_JWT_TOKEN=slavsalon
-branches:
-  only:
-  - master
 install:
   - git pull
   - npm ci
