@@ -10,6 +10,8 @@
  - cd slav-server
  - npm run start
 
+before deploy - install npm install -g pm2
+
 ### deploy
  - cd slav-server
  - git pull
@@ -26,3 +28,6 @@
 ### to add new user
   - cd slav-server
   - npm run adduser
+
+
+test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'
