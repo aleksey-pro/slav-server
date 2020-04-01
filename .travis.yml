@@ -13,6 +13,7 @@ branches:
   only:
   - master
 install:
+  - git pull
   - npm ci
 before_script:
   - npm install -g pm2
