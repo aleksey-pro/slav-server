@@ -9,7 +9,7 @@ branches:
 install:
   - npm ci
 before_script:
-  - cat (pwd)
+  - cat $(pwd)
   # - npm install -g pm2
   # - cd /home/aleks/www/slavsalon.ru/config/
 script:
