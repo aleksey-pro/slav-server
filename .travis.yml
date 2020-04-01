@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 10.16
+env:
+  - NODE_ENV=production
+branches:
+  only:
+  - master
+install:
+  - npm ci
+script:
+  - cd /home/aleks/www/slavsalon.ru/config
+  - pm2 start ecosystem.config.js
