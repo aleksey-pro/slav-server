@@ -29,4 +29,5 @@ before deploy - install npm install -g pm2
   - cd slav-server
   - npm run adduser
 
+
 test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'
