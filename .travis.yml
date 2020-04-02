@@ -3,12 +3,11 @@ node_js:
   - 10.16
 env:
 deploy:
+- provider: script
   skip_cleanup: true
-install:
-  - git pull
-  - npm ci
-before_script:
+  script: "cd $TRAVIS_BUILD_DIR && git pull"
+  on:
+    branch: master
+after_deploy:
   - npm install -g pm2
   - cd $TRAVIS_BUILD_DIR && pm2 start ecosystem.config.js
-script:
-  - npm test --coverage
