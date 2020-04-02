@@ -30,4 +30,4 @@ before deploy - install npm install -g pm2
   - npm run adduser
 
 
-test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'
+// test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'
