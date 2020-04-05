@@ -2,8 +2,7 @@ const QRCode = require('qrcode');
 const path = require('path');
 
 const options = {
-    //   dark: '#00F', // Blue modules
-    //   light: '#0000' // Transparent background
+  errorCorrectionLevel: 'H',
 };
 
 const generateQRCode = async (id, name) => {
