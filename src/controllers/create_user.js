@@ -1,7 +1,10 @@
 const crypto = require('crypto');
 const mongoose  = require('mongoose');
 const UserModel = require('../models/user');
-mongoose.connect(process.env.MONGO_URI);
+
+const mongo_uri = process.env.NODE_ENV === windevelopment ? process.env.MONGO_URI_CLOUD : process.env.MONGO_URI;
+
+mongoose.connect(mongo_uri);
 
 const email = 'admin@slavsalon.ru';
 const password = '12345';

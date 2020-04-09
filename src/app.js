@@ -10,14 +10,18 @@ const routes = require('./routes/routes');
 mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(process.env.MONGO_URI);
+  if (process.env.NODE_ENV === 'development') {
+    mongoose.connect(process.env.MONGO_URI);
+  }
+  if (process.env.NODE_ENV === 'windevelopment') {
+    mongoose.connect(process.env.MONGO_URI_CLOUD);
+  }  
 }
 
 // !!!order of middlewares is important
 app.use(bodyParser.json()); //! above routes very important
 app.use(cors());
 routes(app);
-app.use(express.static(path.join(__dirname, "public")));
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });

@@ -7,7 +7,9 @@
     "start": "NODE_ENV=development nodemon ./src/index.js",
     "test": "",
     "start:prod": "NODE_ENV=production node ./src/index.js",
-    "adduser": "MONGO_URI=mongodb://localhost:27017/slavsalon node /home/aleksey/projects/sem-server/src/controllers/create_user.js"
+    "adduser": "MONGO_URI=mongodb://aleks:asd159@localhost:27017/slavsalon node ./src/controllers/create_user.js",
+    "win-start": "set NODE_ENV=windevelopment&&nodemon ./src/index.js",
+    "win-adduser": "set NODE_ENV=windevelopment&&node ./src/controllers/create_user.js"
   },
   "keywords": [],
   "author": "",
