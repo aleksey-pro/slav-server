@@ -1,23 +1,34 @@
-## SLAV-SERVER
+# CLIENTS MANAGE SYSTEM 
 
-### mongo start:
-- cd config
-- docker-compose up -d docker-compose.yml
+http://www.xn--80aaf8admgsd3i.xn--p1acf/admin/
+
+Связанный репозиторий (панель управления администратора салона) - 
+
+https://github.com/aleksey-pro/slav-board
+
+## Описание
+
+Приложение для учета посетителей салона красоты. Позволяет 
+вести учет посещений, начислять и использовать бонусы. Вести оценку клиентов, на основе чего реализовывать программу лояльности.
+
+Особенностью проекта является идентификация пользователя на базе QR-кода, нанесенного на [фирменный брелок](https://i.postimg.cc/kXz3QpzY/U2-Ft-I2l-LOH0.jpg) 
+
+Считывание кода позволяет администратору получать моментально данные о клиенте с любого устройства, вносить изменения.
+
+## Настройка проекта
 
 ### development
  - git clone
  - npm install
  - cd slav-server
- - npm run start
+ - npm run start (npm run win-start on WINDOWS)
 
-before deploy - install npm install -g pm2
-
-### deploy
- - cd slav-server
- - git pull
- - pm2 restart <process_number>
+### mongo start:
+- cd config
+- docker-compose up -d docker-compose.yml
 
 ### first deploy
+ - npm install -g pm2
  - git clone
  - cd slav-server
  - npm install --only=prod
@@ -25,9 +36,14 @@ before deploy - install npm install -g pm2
  - check or edit envs in ecosystem.config.js
  - pm2 start ecosystem.config.js
 
-### to add new user
+### deploy on push code
+ - cd slav-server
+ - git pull
+ - pm2 restart <process_number>
+
+### to add new user to database
   - cd slav-server
-  - npm run adduser
+  - npm run adduser (npm run win-adduser on WINDOWS)
 
 
 // test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'
