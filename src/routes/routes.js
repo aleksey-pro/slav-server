@@ -9,7 +9,7 @@ module.exports = (app) => {
 
   app.post('/api/v1/auth', authController);
 
-  app.get('/api/v1/clients', checkAuth, ClientsController.get);
+  app.get('/api/v1/clients', checkAuth(), ClientsController.get);
 
   app.get('/api/v1/qrimages', (req, res, next) => {
     try {
@@ -20,14 +20,14 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/api/v1/client/:id', checkAuth, ClientsController.getOne);
+  app.get('/api/v1/client/:id', checkAuth(), ClientsController.getOne);
 
-  app.get('/api/v1/register/:id', ClientsController.updateOne);
+  app.get('/api/v1/register/:id', checkAuth(), ClientsController.updateOne);
 
-  app.post('/api/v1/clients', checkAuth, createClient);
+  app.post('/api/v1/clients', checkAuth('admin'), createClient);
 
-  app.put('/api/v1/clients/:id', checkAuth, ClientsController.edit);
+  app.put('/api/v1/clients/:id', checkAuth('admin'), ClientsController.edit);
 
-  app.delete('/api/v1/clients/:id', ClientsController.delete);
+  app.delete('/api/v1/clients/:id', checkAuth('admin'), ClientsController.delete);
 
 };
