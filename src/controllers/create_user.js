@@ -2,12 +2,19 @@ const crypto = require('crypto');
 const mongoose  = require('mongoose');
 const UserModel = require('../models/user');
 
-const mongo_uri = process.env.NODE_ENV === windevelopment ? process.env.MONGO_URI_CLOUD : process.env.MONGO_URI;
+const mongo_uri = process.env.NODE_ENV === 'windevelopment' ? 
+  'mongodb://aleks:7a068ae27@ds123725.mlab.com:23725/slavsalon' :
+  'mongodb://aleks:asd159@localhost:27017/slavsalon';
 
 mongoose.connect(mongo_uri);
 
-const email = 'admin@slavsalon.ru';
-const password = '12345';
+// const email = 'admin@slavsalon.ru';
+// const password = '12345';
+// const role = 'admin';
+
+const email = 'manager@slavsalon.ru';
+const password = '123';
+const role = 'manager';
 
 const hash = crypto.createHash('sha256');
 const hashPassword = hash.update(password).digest('hex');
@@ -15,6 +22,7 @@ const hashPassword = hash.update(password).digest('hex');
 const user = new UserModel({
   email,
   password: hashPassword,
+  role,
 });
 
 user.save();
