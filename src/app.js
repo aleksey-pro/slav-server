@@ -10,7 +10,7 @@ const routes = require('./routes/routes');
 mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV !== 'test') {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
     mongoose.connect(process.env.MONGO_URI);
   }
   if (process.env.NODE_ENV === 'windevelopment') {
