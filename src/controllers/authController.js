@@ -13,7 +13,8 @@ module.exports = async (req, res, next) => {
     .findOne({ email })
     .then(user => {
       if (user.password !== hashPassword) {
-        res.send({ error: true });
+        // res.send({ error: true });
+        res.send('User not found');
       }
       const token = sign(
         {

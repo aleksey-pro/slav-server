@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV !== 'test') {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
-    mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI, () => console.log(`MongoDb at ${process.env.MONGO_URI}`));
   }
   if (process.env.NODE_ENV === 'windevelopment') {
     mongoose.connect(process.env.MONGO_URI_CLOUD);
