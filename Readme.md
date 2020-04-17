@@ -1,7 +1,5 @@
 # CLIENTS MANAGE SYSTEM 
 
-!!! На данный момент упал ЦОД провайдера. Жду чтобы подняли...
-
 http://www.xn--80aaf8admgsd3i.xn--p1acf/admin/
 
 Для авторизации:
