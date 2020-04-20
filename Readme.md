@@ -6,6 +6,13 @@ http://www.xn--80aaf8admgsd3i.xn--p1acf/admin/
 
 https://github.com/aleksey-pro/slav-board
 
+## Технологии
+
+- express.js
+- typesript
+- mongoose (MongoDB)
+- docker
+
 ## Описание
 
 Приложение для учета посетителей салона красоты. Позволяет 
