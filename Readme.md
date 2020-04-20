@@ -17,6 +17,8 @@ https://github.com/aleksey-pro/slav-board
 
 ## Настройка проекта
 
+npm i -g typescript
+
 ### development
  - git clone
  - npm install
