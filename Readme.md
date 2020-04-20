@@ -12,6 +12,13 @@ user: manager@slavsalon.ru pwd: 123
 
 https://github.com/aleksey-pro/slav-board
 
+## Технологии
+
+- express.js
+- typesript
+- mongoose (MongoDB)
+- docker
+
 ## Описание
 
 Приложение для учета посетителей салона красоты. Позволяет 
