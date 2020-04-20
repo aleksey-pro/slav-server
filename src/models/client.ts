@@ -1,6 +1,17 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
+export interface IClient extends mongoose.Document {
+  id: string,
+  created: Date,
+  name: string,
+  visits: number,
+  bonuses: number,
+  bonusesToAdd: string,
+  info: string,
+  link: string,
+  _id: string,
+}
 
 const ClientSchema = new Schema({
   id: {
@@ -25,6 +36,4 @@ const ClientSchema = new Schema({
   link: String,
 });
 
-const Client = mongoose.model('client', ClientSchema);
-
-module.exports = Client;
+export const Client : mongoose.Model<IClient> = mongoose.model<IClient>('client', ClientSchema);

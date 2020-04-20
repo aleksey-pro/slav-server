@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon ./src/index.js",
+    "tsc:dev": "tsc -w --sourceMap",
+    "tsc:build": "npm run clean && tsc",
+    "tsc:build:prod": "npm run clean && ./node_modules/.bin/tsc",
+    "watch": "NODE_ENV=development nodemon ./dist/index.js",
     "test": "",
-    "start:prod": "NODE_ENV=production node ./src/index.js",
-    "adduser": "MONGO_URI=mongodb://aleks:asd159@localhost:27017/slavsalon node ./src/controllers/create_user.js",
-    "win-start": "set NODE_ENV=windevelopment&&nodemon ./src/index.js",
-    "win-adduser": "set NODE_ENV=windevelopment&&node ./src/controllers/create_user.js"
+    "adduser": "MONGO_URI=mongodb://localhost:27017/slavsalon node ./dist/src/controllers/create_user.js",
+    "win-watch": "set NODE_ENV=windevelopment&&nodemon ./dist/index.js",
+    "win-adduser": "set NODE_ENV=windevelopment&&node ./dist/src/controllers/create_user.js",
+    "clean": "node_modules/.bin/rimraf ./dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/jsonwebtoken": "^8.3.9",
+    "@types/mongoose": "^5.7.12",
+    "@types/node": "^13.11.1",
+    "@types/qrcode": "^1.3.4",
+    "@types/uuid": "^7.0.2",
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "crypto": "^1.0.1",
@@ -25,6 +35,7 @@
     "mongoose": "5.9.6",
     "nodemon": "2.0.2",
     "qrcode": "1.4.4",
+    "rimraf": "^3.0.2",
     "supertest": "4.0.2",
     "uuid": "7.0.2"
   }

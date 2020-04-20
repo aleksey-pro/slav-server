@@ -1,17 +1,17 @@
-const path = require('path');
-const ClientsController = require('../controllers/clients_controler');
-const authController = require('../controllers/authController');
-const checkAuth = require('../middlewares/verify-user-token');
-const createClient = require('../controllers/create_client');
-const app = require('../app');
+import ClientsController from '../controllers/clients_controler';
+import authController from '../controllers/authController';
+import checkAuth from '../middlewares/verify-user-token';
+import createClient from '../controllers/create_client';
 
-module.exports = (app) => {
+import { Express, Response, Request } from "express";
+
+const routes = (app: Express) => {
 
   app.post('/api/v1/auth', authController);
 
   app.get('/api/v1/clients', checkAuth(), ClientsController.get);
 
-  app.get('/api/v1/qrimages', (req, res, next) => {
+  app.get('/api/v1/qrimages', (req: Request, res: Response) => {
     try {
       const file = req.query.img;
       res.download(`${process.cwd()}/src/qrimages/${file}`);
@@ -31,3 +31,5 @@ module.exports = (app) => {
   app.delete('/api/v1/clients/:id', checkAuth('admin'), ClientsController.delete);
 
 };
+
+export default routes;
