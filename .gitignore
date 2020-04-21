@@ -2,3 +2,4 @@
 /dist
 .env
 tsconfig-example.json
+/test/controllers

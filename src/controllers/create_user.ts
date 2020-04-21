@@ -11,8 +11,7 @@ const options: ConnectionOptions = {
   "user": process.env.MONGO_USER,
   "pass": process.env.MONGO_PASS,
   "useUnifiedTopology": true,
-  "useNewUrlParser": true,
-  "useCreateIndex": true,
+  "useNewUrlParser": true
 };
 
 

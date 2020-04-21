@@ -8,14 +8,13 @@ dotenv.config();
 import routes from './routes/routes';
 
 const app = express();
-import { Response } from "express";
+import { Response, Request } from "express";
 
 const options = {
   "user": process.env.MONGO_USER,
   "pass": process.env.MONGO_PASS,
   "useUnifiedTopology": true,
-  "useNewUrlParser": true,
-  "useCreateIndex": true,
+  "useNewUrlParser": true
 };
 
 if (process.env.NODE_ENV !== 'test') {
@@ -31,8 +30,9 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json()); //! above routes very important
 app.use(cors());
 routes(app);
-app.use((err, res: Response): void => {
+app.use((err, req: Request, res: Response): void => {
   res.status(422).send({ error: 'Server Error' });
 });
 
-export default app;
+// fix to make tests work (not export default!)
+module.exports =  app;
