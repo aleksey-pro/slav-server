@@ -59,6 +59,3 @@ npm i -g typescript
 ### to add new user to database
   - cd slav-server
   - npm run adduser (npm run win-adduser on WINDOWS)
-
-
-// test: NODE_ENV=test nodemon --exec 'mocha --recursive -R min'

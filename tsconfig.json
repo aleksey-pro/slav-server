@@ -8,5 +8,10 @@
       "esModuleInterop": true,
       "moduleResolution": "node"
     },
-    "exclude": ["./ecosystem.config.js", "node_modules", "dist"],
+    "exclude": [
+      "./ecosystem.config.js",
+      "node_modules",
+      "dist",
+      "test"
+    ],
 }

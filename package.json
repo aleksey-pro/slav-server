@@ -8,9 +8,10 @@
     "tsc:build": "npm run clean && tsc",
     "tsc:build:prod": "npm run clean && ./node_modules/.bin/tsc",
     "watch": "NODE_ENV=development nodemon ./dist/index.js",
-    "test": "",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'",
     "adduser": "MONGO_URI=mongodb://localhost:27017/slavsalon node ./dist/src/controllers/create_user.js",
     "win-watch": "set NODE_ENV=windevelopment&&nodemon ./dist/index.js",
+    "win-test": "set NODE_ENV=test&&nodemon --exec \"mocha --recursive --timeout 10000 -R min\"",
     "win-adduser": "set NODE_ENV=windevelopment&&node ./dist/src/controllers/create_user.js",
     "clean": "node_modules/.bin/rimraf ./dist"
   },
