@@ -16,6 +16,7 @@ https://github.com/aleksey-pro/slav-board
 
 - express.js
 - typesript
+- api tests with Mocha
 - mongoose (MongoDB)
 - docker
 
