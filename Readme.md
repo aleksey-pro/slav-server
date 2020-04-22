@@ -37,7 +37,8 @@ npm i -g typescript
  - git clone
  - npm install
  - cd slav-server
- - npm run start (npm run win-start on WINDOWS)
+ - tsc:dev
+ - npm run watch (npm run win-watch on WINDOWS)
 
 ### mongo start:
 - cd config
@@ -48,6 +49,7 @@ npm i -g typescript
  - git clone
  - cd slav-server
  - npm install --only=prod
+ - tsc:build:prod
  - cd config
  - check or edit envs in ecosystem.config.js
  - pm2 start ecosystem.config.js
@@ -55,8 +57,12 @@ npm i -g typescript
 ### deploy on push code
  - cd slav-server
  - git pull
+ - tsc:build:prod
  - pm2 restart <process_number>
 
 ### to add new user to database
   - cd slav-server
   - npm run adduser (npm run win-adduser on WINDOWS)
+
+### test application
+ - npm tun test
