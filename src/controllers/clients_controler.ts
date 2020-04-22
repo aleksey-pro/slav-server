@@ -21,9 +21,9 @@ const ClientsController = {
       .catch(next);
   },
 
-  updateOne(req: Request, res: Response, next: NextFunction) {
+  updateVisit(req: Request, res: Response, next: NextFunction) {
     const cypherId = req.params.id;
-    const decryptedId = crypto.decrypt(cypherId);
+    const decryptedId: string = crypto.decrypt(cypherId);
     ClientModel.findOneAndUpdate({ id: decryptedId }, { $inc: { visits: 1 }} )
       .then(() => res.redirect(`${process.env.CLIENT_URL}/admin/#/client/${decryptedId}`))
       .catch(next);
@@ -38,7 +38,6 @@ const ClientsController = {
         const { bonusesToAdd } = newData;
         const bonusesTotal = bonuses || 0 + Number(bonusesToAdd);
         const updatedData = Object.assign(newData, { bonuses: bonusesTotal });
-        // console.log("edit -> updatedData", updatedData)
         ClientModel.findOneAndUpdate({ id: clientId }, updatedData)
           .then(() => ClientModel.findOne({ id:  clientId}))
           .then(client => res.send(client))

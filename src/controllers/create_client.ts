@@ -18,9 +18,7 @@ const createClient = (req: Request, res: Response, next: NextFunction) =>  {
   const newClient = Object.assign(data, { id, link, created });
 
   ClientModel.create(newClient)
-    .then(() => {
-      generateQRCode(encryptedId, id)
-    })
+    .then(() => generateQRCode(encryptedId, id))
     .then(() => res.send('ok'))
     .catch(next);
 };
