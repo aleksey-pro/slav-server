@@ -4,18 +4,12 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 dotenv.config();
+import { options } from './bdconfig';
 
 import routes from './routes/routes';
 
 const app = express();
 import { Response, Request } from "express";
-
-const options = {
-  "user": process.env.MONGO_USER,
-  "pass": process.env.MONGO_PASS,
-  "useUnifiedTopology": true,
-  "useNewUrlParser": true
-};
 
 if (process.env.NODE_ENV !== 'test') {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {

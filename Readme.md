@@ -49,7 +49,7 @@ npm i -g typescript
  - git clone
  - cd slav-server
  - npm install --only=prod
- - tsc:build:prod
+ - tsc:build
  - cd config
  - check or edit envs in ecosystem.config.js
  - pm2 start ecosystem.config.js
