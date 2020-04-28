@@ -38,7 +38,6 @@ const ClientsController = {
         const { bonusesToAdd } = newData;
         const bonusesTotal = bonuses + Number(bonusesToAdd);
         const updatedData = Object.assign(newData, { bonuses: bonusesTotal });
-        // console.log("edit -> updatedData", updatedData)
         ClientModel.findOneAndUpdate({ id: clientId }, updatedData)
           .then(() => ClientModel.findOne({ id:  clientId}))
           .then(client => res.send(client))
