@@ -4,8 +4,8 @@ import { User as UserModel } from '../models/user';
 import { options } from '../bdconfig';
 
 const mongo_uri = process.env.NODE_ENV === 'windevelopment' ? 
- process.env.MONGO_URI_CLOUD :
- process.env.MONGO_URI;
+ 'mongodb://aleks:7a068ae27@ds123725.mlab.com:23725/slavsalon' :
+ 'mongodb://localhost:27017/slavsalon';
 
 connect(mongo_uri, options);
 

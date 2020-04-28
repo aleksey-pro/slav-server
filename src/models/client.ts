@@ -11,6 +11,8 @@ export interface IClient extends mongoose.Document {
   info: string,
   link: string,
   _id: string,
+  orderNum: number,
+  rating: number,
 }
 
 const ClientSchema = new Schema({
@@ -18,6 +20,7 @@ const ClientSchema = new Schema({
     type: String,
     required: true
   },
+  orderNum: Number,
   created: Date,
   name: String,
   visits: {
@@ -31,6 +34,10 @@ const ClientSchema = new Schema({
   bonusesToAdd: {
     type: String,
     default: 0,
+  },
+  rating: {
+    type: Number,
+    default: 0,  
   },
   info: String,
   link: String,
