@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
 import { connect } from 'mongoose';
-import { User as UserModel } from '../models/user';
-import { options } from '../bdconfig';
+import { User as UserModel } from '../../../models/user';
+import { options } from '../../../bdconfig';
 
 const mongo_uri = process.env.NODE_ENV === 'windevelopment' ? 
  'mongodb://aleks:7a068ae27@ds123725.mlab.com:23725/slavsalon' :

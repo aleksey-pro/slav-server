@@ -1,8 +1,8 @@
-import { Client as ClientModel } from '../models/client';
-const crypto = require('../utils/encrypt');
+import { Client as ClientModel } from '../../../models/client';
+const crypto = require('../../../utils/encrypt');
 
 import { Request, Response, NextFunction } from "express";
-import { IClient } from '../models/client';
+import { IClient } from '../../../models/client';
 
 const ClientsController = {
 
@@ -15,7 +15,7 @@ const ClientsController = {
   },
 
   getOne(req: Request, res: Response, next: NextFunction) {
-    const id = req.params.id;
+    const { id } = req.params;
     ClientModel.findOne({ id })
       .then((data) => res.send(data))
       .catch(next);
