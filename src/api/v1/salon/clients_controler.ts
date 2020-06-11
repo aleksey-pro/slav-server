@@ -25,7 +25,7 @@ const ClientsController = {
     const cypherId = req.params.id;
     const decryptedId = crypto.decrypt(cypherId);
     ClientModel.findOneAndUpdate({ id: decryptedId }, { $inc: { visits: 1 }} )
-      .then(() => res.redirect(`${process.env.CLIENT_URL}/admin/#/client/${decryptedId}`))
+      .then(() => res.redirect(`${process.env.SALON_URL}/admin/#/client/${decryptedId}`))
       .catch(next);
   },
 
