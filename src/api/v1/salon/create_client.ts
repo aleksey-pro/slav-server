@@ -1,7 +1,7 @@
-const crypto = require('../utils/encrypt');
+const crypto = require('../../../utils/encrypt');
 import { v4 as uuidv4 } from 'uuid';
-import { Client as ClientModel } from '../models/client';
-import { generateQRCode } from '../utils/generateQRCode';
+import { Client as ClientModel } from '../../../models/client';
+import { generateQRCode } from '../../../utils/generateQRCode';
 
 import { Request, Response, NextFunction } from "express";
 

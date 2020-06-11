@@ -1,15 +1,15 @@
-import ClientsController from '../controllers/clients_controler';
-import authController from '../controllers/authController';
-import checkAuth from '../middlewares/verify-user-token';
-import createClient from '../controllers/create_client';
+import ClientsController from './clients_controler';
+import authController from './authController';
+import checkAuth from '../../../middlewares/verify-user-token';
+import createClient from './create_client';
 
 import { Express, Response, Request } from "express";
 
-const routes = (app: Express) => {
+const salonRroutes = (app: Express) => {
 
   app.post('/api/v1/auth', authController);
 
-  app.get('/api/v1/clients', checkAuth(), ClientsController.get);
+  app.get('/api/v1/clients', checkAuth(), ClientsController.get);  
 
   app.get('/api/v1/qrimages', (req: Request, res: Response) => {
     try {
@@ -22,7 +22,7 @@ const routes = (app: Express) => {
 
   app.get('/api/v1/client/:id', checkAuth(), ClientsController.getOne);
 
-  app.get('/api/v1/register/:id', checkAuth(), ClientsController.updateOne);
+  // app.get('/api/v1/register/:id', checkAuth(), ClientsController.updateOne);
 
   app.post('/api/v1/clients', checkAuth('admin'), createClient);
 
@@ -30,6 +30,8 @@ const routes = (app: Express) => {
 
   app.delete('/api/v1/clients/:id', checkAuth('admin'), ClientsController.delete);
 
+  // app.get('*', (req, res) => res.redirect(`${process.env.CLIENT_URL}/`));
+
 };
 
-export default routes;
+export default salonRroutes;

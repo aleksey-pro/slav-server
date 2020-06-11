@@ -9,10 +9,16 @@ const encrypt = (id) => {
 }
 
 const decrypt = (cypher) => {
-  const decipher = crypto.createDecipher('aes128', password);
-  let decrypted = decipher.update(cypher,'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-  return decrypted;
+  try {
+    const decipher = crypto.createDecipher('aes128', password);
+    let decrypted = decipher.update(cypher,'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;    
+  } catch (error) {
+    return "error"
+  }
+
+
 }
 
 module.exports = { encrypt, decrypt };
