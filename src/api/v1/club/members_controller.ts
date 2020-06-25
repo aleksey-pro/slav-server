@@ -1,4 +1,5 @@
 import { Member as MemberModel } from '../../../models/member';
+import { Client as ClientModel } from '../../../models/client';
 import { Request, Response, NextFunction } from "express";
 import { sign } from '../../..//utils/jwt-util';
 const crypto = require('../../../utils/encrypt');
@@ -16,7 +17,7 @@ const MembersController = {
       .then((data) => {
         res.send(data);
       })
-      .catch(next);        
+      .catch(next);
     },
     edit(req: Request, res: Response, next: NextFunction) {
       const memberId = req.params.id;
@@ -32,11 +33,18 @@ const MembersController = {
       const cypherId = req.params.id;
       const decryptedId = crypto.decrypt(cypherId);
       if(decryptedId === "error") {
-        res.redirect(`${process.env.CLIENT_URL}/register`);
+        res.redirect(`${process.env.CLIENT_URL}/`);
         return;
       };
       MemberModel.findOne({id: decryptedId})
         .then(member => {
+
+          if(!member) {
+            console.log(`created new user with cypher=${cypherId} and id=${decryptedId}`);
+            res.redirect(`${process.env.CLIENT_URL}/#/createNewUser?id=${decryptedId}`);
+            return;
+          };
+
           const token: string = sign(
             {
               id: member.id,

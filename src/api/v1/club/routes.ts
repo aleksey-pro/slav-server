@@ -8,11 +8,11 @@ const clubRroutes = (app: Express) => {
 
   app.post('/api/v1/authMember', authController);
 
-  app.post('/api/v1/registerMember', createMember);
+  app.get('/api/v1/registerMember/:id', createMember);
 
   app.get('/api/v1/members', MembersController.list);
 
-  app.get('/api/v1/member/:id', MembersController.get);  
+  app.get('/api/v1/member/:id', MembersController.get);
 
   app.put('/api/v1/member/:id', MembersController.edit);
 
