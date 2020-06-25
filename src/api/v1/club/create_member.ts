@@ -16,7 +16,10 @@ const createMember = (req: Request, res: Response, next: NextFunction) => {
 
 	ClientModel.find({})
 		.then(clients => {
-			// const clientsIdsArray = getIdsArray(clients);
+			const clientsIdsArray = getIdsArray(clients);
+			if(!clientsIdsArray.includes(id)) {
+				res.send({error: true});
+			}
 			// const randomId = clientsIdsArray[Math.floor(Math.random() * clientsIdsArray.length)];
 			MemberModel.find({})
 				.then(members => {
@@ -30,17 +33,18 @@ const createMember = (req: Request, res: Response, next: NextFunction) => {
 						MemberModel.create({id})
 							.then(() => {
 								ClientModel.findOneAndUpdate({ id }, { name: "New User" } )
-									.then(() => {
+									.then((user) => {
+                                    	console.log("createMember -> user", user)
 										const token: string = sign(
 											{
-												id,
+												id: user.id,
 												name: "New User",
 											}
 										);
 										res.send({token, id})
 									})
 							})
-					} else console.log('no empty clients');
+					} else res.send({error: { message: 'no empty clients'}});
 				})
 	})
 	.catch(next);
