@@ -41,7 +41,7 @@ const MembersController = {
 
           if(!member) {
             console.log(`created new user with cypher=${cypherId} and id=${decryptedId}`);
-            res.redirect(`${process.env.CLIENT_URL}/#/createNewUser?id=${decryptedId}`);
+            res.redirect(`http://www.xn--80acc6acd1bv2f.xn--p1acf/#/createNewUser?id=${decryptedId}`);
             return;
           };
 
