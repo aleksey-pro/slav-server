@@ -18,12 +18,17 @@ if (process.env.NODE_ENV !== 'test') {
   }
   if (process.env.NODE_ENV === 'windevelopment') {
     connect(process.env.MONGO_URI_CLOUD, (): void => console.log(`MongoDb at ${process.env.MONGO_URI_CLOUD}`));
-  }  
+  }
 }
 
 // !!!order of middlewares is important
 app.use(bodyParser.json()); //! above routes very important
 app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 salonRroutes(app);
 clubRroutes(app);
 // app.use((err, req: Request, res: Response): void => {
