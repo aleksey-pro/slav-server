@@ -51,7 +51,7 @@ const MembersController = {
               nick: member.nick,
             }
           );
-          res.redirect(`${process.env.CLIENT_URL}/#/authQRCode?token=${token}&id=${member.id}`)
+          res.redirect(`http://www.xn--80acc6acd1bv2f.xn--p1acf/#/authQRCode?token=${token}&id=${member.id}`)
         })
         .catch(err => {
           console.log(err);
