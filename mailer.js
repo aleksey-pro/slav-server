@@ -2,9 +2,11 @@ const express = require('express'),
     path = require('path'),
     nodeMailer = require('nodemailer'),
     bodyParser = require('body-parser'),
+    cors = require('cors'),
     dotenv = require('dotenv').config();
     var app = express();
     // app.use(express.static(path.join(__dirname+'/dist/')));
+    app.use(cors());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
 
@@ -94,7 +96,7 @@ const express = require('express'),
               </div>
             `,
         };
-  
+
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 return console.log(error);
