@@ -10,7 +10,7 @@ import salonRroutes from './api/v1/salon/routes';
 import clubRroutes from './api/v1/club/routes';
 
 const app = express();
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 
 if (process.env.NODE_ENV !== 'test') {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
@@ -21,14 +21,18 @@ if (process.env.NODE_ENV !== 'test') {
   }
 }
 
+const allowCrossDomain = function (req: Request, res: Response, next: NextFunction) {
+  res.header('Access-Control-Allow-Origin', 'http://www.xn--80aaf8admgsd3i.xn--p1acf');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+};
+
 // !!!order of middlewares is important
 app.use(bodyParser.json()); //! above routes very important
-app.use(cors());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(cors());
+app.use(allowCrossDomain);
 salonRroutes(app);
 clubRroutes(app);
 // app.use((err, req: Request, res: Response): void => {
