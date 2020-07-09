@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 const allowCrossDomain = function (req: Request, res: Response, next: NextFunction) {
-  res.header('Access-Control-Allow-Origin', 'http://www.xn--80aaf8admgsd3i.xn--p1acf');
+  res.header('Access-Control-Allow-Origin', 'http://xn--80aaf8admgsd3i.xn--p1acf');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE, CREATE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
