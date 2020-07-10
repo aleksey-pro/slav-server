@@ -21,17 +21,15 @@ if (process.env.NODE_ENV !== 'test') {
   }
 }
 
+
 const allowCrossDomain = function (req: Request, res: Response, next: NextFunction) {
   let listSite = ['http://www.xn--80acc6acd1bv2f.xn--p1acf','http://xn--80acc6acd1bv2f.xn--p1acf'];
+  console.log(req.headers);
   if(req.headers['origin']) {
-    const origin = listSite.find(l => l === req.headers['origin'][0]);
+    const origin = listSite.find(list => list === req.headers['origin'][0]) || "*";
     res.header('Access-Control-Allow-Origin', origin);
   }
 
-  let origin = req.headers['origin'][0];
-  if(listSite.indexOf(origin) > -1) {
-      res.header('Access-Control-Allow-Origin', origin);
-  }
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
