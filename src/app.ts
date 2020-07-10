@@ -24,12 +24,13 @@ if (process.env.NODE_ENV !== 'test') {
 const allowCrossDomain = function (req: Request, res: Response, next: NextFunction) {
   let listSite = ['http://www.xn--80acc6acd1bv2f.xn--p1acf','http://xn--80acc6acd1bv2f.xn--p1acf'];
   let origin = req.headers['origin'][0];
+  console.log("allowCrossDomain -> origin", origin)
   if(listSite.indexOf(origin) > -1) {
       res.header('Access-Control-Allow-Origin', origin);
   }
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Credentials', 'true');
   res.header('X-Powered-By', 'O_o');
   next();
 };
