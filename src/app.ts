@@ -29,10 +29,6 @@ const allowCrossDomain = function (req: Request, res: Response, next: NextFuncti
     res.header('Access-Control-Allow-Origin', origin);
   }
 
-  let origin = req.headers['origin'][0];
-  if(listSite.indexOf(origin) > -1) {
-      res.header('Access-Control-Allow-Origin', origin);
-  }
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
